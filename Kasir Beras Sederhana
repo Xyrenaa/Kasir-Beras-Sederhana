@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.text.NumberFormat;
+import java.util.Locale;    
+
+public class KasirBerasSederhana {
+  public static void main(String args[]) {
+      // Membuat Scanner untuk input pengguna  
+      Scanner scanner = new Scanner(System.in);
+      
+      // Declare Variable
+    double harga_beras, total_harga, harga_potongan, potongan, jumlah_beli, uang_bayar, uang_kembalian;
+    harga_beras = 17000;
+    potongan = 5.0/100;
+    
+    NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    
+    System.out.println("__Kasir Beras Sederhana__");
+    
+    System.out.print("\nMasukkan Jumlah Beli (kg) : ");
+    jumlah_beli = scanner.nextDouble () ;
+    
+    total_harga = harga_beras * jumlah_beli;
+    harga_potongan = total_harga - (total_harga * potongan) ;
+    
+    String formattedRupiah = rupiahFormat.format(total_harga);
+    String formattedPotongan = rupiahFormat.format(harga_potongan);
+    
+     System.out.println("Total harga " + formattedRupiah);
+     System.out.println("Mendapat Potongan " + (potongan*100) + "% menjadi : " + formattedPotongan);
+     
+     System.out.print("\nMasukkan jumlah uang yang dibayarkan :  ");
+     uang_bayar = scanner.nextDouble ();
+     
+     uang_kembalian = uang_bayar - harga_potongan;
+     String formattedKembalian = rupiahFormat.format(uang_kembalian);
+     
+     System.out.println("Uang Kembalian : " + formattedKembalian + "\n------------------------------------------------------------");
+      
+  }
+}
